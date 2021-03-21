@@ -1,0 +1,47 @@
+<nav class="nav-wraper transparent z-depth-5">
+  <div class="container">
+    <a href="/" class="brand-logo">Art Secure</a>
+    <a href="#" class="sidenav-trigger" data-target="mobile-links">
+      <i class="material-icons">menu</i>
+    </a>
+    <ul class="right hide-on-med-and-down hide-on-large">
+      <li><a href="/">Home</a></li>
+      <li><a href="/posts">Explore</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#contact">Contacts</a></li>
+      {% if user.is_authenticated %}
+        <li><a href="/user/{{ user.id }}">Profile</a></li>
+        {% if user.is_staff %}
+          <li><a href="/user">Staff Area</a></li>
+        {% endif %}
+        <li>Hi, {{ request.user }}!</li>
+        <li><a href="/logout" class="tooltipped btn-floating btn-small indigo darken-3" data-tooltip="Logout">
+            <i class="material-icons white indigo-text">logout</i>
+        </a></li>
+      {% else %}
+        <li><a href="/register">Sign up</a></li>
+        <li><a href="/login">Login</a></li>
+      {% endif %}
+    </ul>
+  </div>
+
+  <ul class="sidenav" id="mobile-links">
+    {% if user.is_authenticated %}
+      <li class="center-align black-text flow-text">Hi, {{ request.user }}!</li>
+    {% endif %}
+    <li><a href="/" class="sidenav-close">Home</a></li>
+    <li><a href="/posts" class="sidenav-close">Explore</a></li>
+    <li><a href="/#about" class="sidenav-close">About</a></li>
+    <li><a href="/#contact" class="sidenav-close">Contact me</a></li>
+    {% if user.is_authenticated %}
+      <li><a href="/user/{{ user.id }}" class="sidenav-close">My account</a></li>
+      {% if user.is_staff %}
+        <li><a href="/user" class="sidenav-close">Staff Area</a></li>
+      {% endif %}
+      <li><a href="/logout" class="sidenav-close">Logout</a></li>
+    {% else %}
+      <li><a href="/login" class="sidenav-close">Login</a></li>
+      <li><a href="/register" class="sidenav-close">Sign up</a></li>
+    {% endif %}
+  </ul>
+</nav>

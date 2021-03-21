@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<!-- Nav bar -->
+<header>
+  {% include 'navbar.html' %}
+</header>
+
+<!-- Grid -->
+<section class="container section scrollspy" id="about">
+    <div class="row valign-wrapper">
+      <div class="col s12 l4">
+        <img src="{% static '/images/coding.jpg' %}" alt="developer code" class="responsive-img materialboxed">
+      </div>
+      <div class="col s12 l6 offset-l1">
+        <h2 class="indigo-text text-darken-4">ArtSecure</h2>
+        <p>Is it possible to keep tracks of your scripts in a public, safe place that lasts
+        forever, protecting your copyright? Yes, it is! With ArtSecure!</p>
+        <a href="#learn-how" class="flow-text">Learn how!</a>
+      </div>
+    </div>
+</section>
+
+<!-- Parallax -->
+<div class="parallax-container">
+  <div class="parallax">
+    <img src="{% static '/images/writing.jpg' %}" alt="writer" class="responsive-img"/>
+  </div>
+</div>
+
+<!-- Learn how -->
+<section class="container section scrollspy" id="learn-how">
+    <div class="row">
+      <div class="col s12 l12">
+        <h2 class="indigo-text text-darken-4">Public and safe. Now you can!</h2>
+          <p>Digital revolution let us connects with everyone in the world in just a blink
+          of an eye. This is absolutely an incredible fact! But, on the otherside, almost
+          everyone can have access to what we upload on the web, putting our intellectual
+          property at risk.</p>
+          <p>Here blockchain comes into play! Every post saved on the blockchain becomes
+          immutable and nobody can change its content, not now, not ever. And this thanks to
+          a high in-hackerable level of security. But how did blockchain can assure that
+          my content is only mine?</p>
+          <p>One of the wonderful aspects blockchain has, it's the timestamp! Timestamp
+          can say who put a content first! Unless someone steals your intellectual property
+          before than you put in on ArtSecure, timestamp can certainly assure that you
+          create that content first!</p>
+          <p>Wanna try it? Just create an account and add a new content!</p>
+          <div class="input-field center">
+            <a href="{% url 'register-view' %}"><button class="btn indigo">Create an account</button></a>
+          </div>
+      </div>
+    </div>
+</section>
+
+<!-- Parallax -->
+<div class="parallax-container">
+  <div class="parallax">
+    <img src="{% static '/images/online-safety.jpg' %}" alt="safe content" class="responsive-img"/>
+  </div>
+</div>
+
+<!-- contact form -->
+  <section class="section container scrollspy" id="contact">
+    <div class="row">
+      <div class="col s12 l5">
+        <h2 class="indigo-text text-darken-4">Get In Touch</h2>
+        <p>If you want to contact me to have more info about it or to simply write me a message, you can do it here!</p>
+
+      </div>
+      <div class="col s12 l5 offset-l2">
+        <form action="">
+          <div class="input-field">
+            <i class="material-icons prefix">email</i>
+            <input type="email" id="email"/>
+            <label for="email">Your Email</label>
+          </div>
+          <div class="input-field">
+            <i class="material-icons prefix">message</i>
+            <textarea class="materialize-textarea" id="message" name="" rows="" cols=""></textarea>
+            <label for="message">Your Message</label>
+          </div>
+          <div class="input-field center">
+            <button class="tooltipped btn indigo" data-tooltip="Not yet linked!">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+

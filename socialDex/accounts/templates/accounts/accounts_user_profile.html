@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<header style="background: url(../../static/images/staff-area.jpg); min-height: 800px;">
+  {% include 'navbar.html' %}
+
+    <!-- Section: User profile -->
+    <section class="container section scrollspy" id="services">
+          <div class="row">
+
+              <!-- Profile info -->
+              <div class="col s12 l12 white-text">
+                  <h2 class="white-text">Profile private area</h2>
+                  <p><strong>Username: </strong>{{ user_obj.username }}</p>
+                  <p><strong>First name: </strong>{{ user_obj.first_name }}</p>
+                  <p><strong>Last name: </strong>{{ user_obj.last_name }}</p>
+                  <p><strong>Actual IP address: </strong>{{ user_info.ip_address }}</p>
+                  <p><strong>Last login: </strong>{{ user_info.last_login }}</p>
+
+                  <!-- Security area -->
+                  <h4>Security settings</h4>
+                  <a class="btn indigo" href="/change_password" style="margin: 10px;;">Change your password here</a>
+                  <h2 class="">Your posts</h2>
+                  <p class="flow-text">N. posts: {{ user_posts.count }}</p>
+              </div>
+
+              <!-- User posts -->
+              <div class="col s12" id="table">
+                <div class="row card">
+                    <table class="centered highlight responsive-table white">
+                        <thead>
+                          <tr>
+                              <th>Post title</th>
+                              <th>Transaction ID post</th>
+                              <th>Published date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for post in user_posts %}
+                              <tr>
+                                <td><a href="{% url 'posts-detail-view' id=post.id %}">{{ post.title }}</a></td>
+                                <td>{{ post.txId }}</td>
+                                <td>{{ post.datetime }}</td>
+                              </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+          </div>
+    </section>
+
+</header>
+{% endblock %}

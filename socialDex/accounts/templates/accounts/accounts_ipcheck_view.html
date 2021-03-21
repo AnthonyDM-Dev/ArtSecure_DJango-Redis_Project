@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<header>
+  {% include 'navbar.html' %}
+
+  <!-- Card IP Check -->
+  <div class="container">
+      <div class="col s12 m7">
+        <h3 class="white-text">Warning!</h3>
+        <div class="card horizontal">
+          <div class="card-stacked">
+            <div class="card-content">
+              <p class="flow-text">Your actual ip address is different from the last login. We suggest you to change
+              password.</p>
+              <div class="card-action">
+                {% if not request.GET.next %}
+                  <a class="btn indigo" href="{% url 'homepage-view' %}" name="next" style="margin: 10px;">Proceed</a>
+                {% elif request.GET.next == '' %}
+                  <a class="btn indigo" href="{% url 'homepage-view' %}" name="next" style="margin: 10px;">Proceed</a>
+                {% else %}
+                  <a class="btn indigo" href="{{ request.GET.next }}" name="next" style="margin: 10px;">Proceed</a>
+                {% endif %}
+                  <a class="btn indigo" href="{% url 'change-password-view' %}" style="margin: 10px;">Change password</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+</header>
+{% endblock %}

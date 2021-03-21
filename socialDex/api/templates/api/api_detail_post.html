@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<header style="background: url(../../../static/images/background-artsecure.jpg); min-height: 700px; background-size: cover; background-position: center;">
+  {% include 'navbar.html' %}
+
+    <!-- Post -->
+    <div class="container">
+        <div class="row">
+            <div class="container">
+              <div class="col s12 m10 l10 push-l1 push-m1">
+                <h2 class="header white-text center">"{{ post.title }}"</h2>
+                <div class="card white">
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <p class="flow-text center">{{ post.composition }}</p>
+                    </div>
+                    <div class="card-action">
+                      {% if user.is_staff %}
+                        <a href="{% url 'user-list-view' %}{{ post.user.id }}">
+                      {% endif %}
+                      Author: {{ post.user }}</a>
+                      <p>{{ post.datetime }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+{% endblock %}

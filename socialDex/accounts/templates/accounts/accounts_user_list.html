@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<header style="background: url(../static/images/staff-area.jpg); min-height: 800px;">
+  {% include 'navbar.html' %}
+
+    <!-- Search bar -->
+    <div class="container white-text">
+        <form action="" method="GET">
+            <input class="white-text" type="text" name="q" placeholder="Search user" value="{{ request.GET.q }}" style="width: 30%;
+            margin-left:1%; color: black;"/>
+            <input class="btn-small indigo" type="submit" value="Search" style="margin: 25px;"/>
+            {% if search %}
+            <h6>Your search appears in {{ counting }} posts</h6>
+            {% endif %}
+        </form>
+    </div>
+
+    <!-- Create new user button -->
+    <div class="container center">
+        <a class="btn-large indigo center" href="{% url 'register-view' %}" name="register-view" style="margin: 25px;">
+            Create a new user</a>
+    </div>
+
+    <!-- Get Json Files -->
+    {% if user.is_staff %}
+        <div class="container">
+            <a class="btn-large indigo center" href="{% url 'posts-json-list-view' %}" name="register-view" style="margin: 10px;">
+            Get Full Json</a>
+            <a class="btn-large indigo center" href="{% url 'posts-json-24h-view' %}" name="register-view" style="margin: 10px;">
+            Get Json (last 24h)</a>
+        </div>
+    {% endif %}
+
+    <!-- Users list -->
+    <div class="container">
+      <ul class="collection with-header">
+        <li class="collection-header"><h4>Users list</h4></li>
+        {% for user, post_count in table.items %}
+            <li class="collection-item avatar">
+              <i class="material-icons circle blue">person</i>
+              <span class="title">
+              <a href="{% url 'user-list-view' %}{{ user.id }}">{{ user }}</a>
+              </span>
+              <p class="grey-text">N. posts published: {{ post_count }}</p>
+              <p class="secondary-content valign-wrapper black-text">{{ user.email }}
+                <i class="material-icons blue-text">email</i>
+              </p>
+            </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+</header>
+{% endblock %}
