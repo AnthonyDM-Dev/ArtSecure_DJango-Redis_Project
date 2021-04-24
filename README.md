@@ -37,7 +37,7 @@ create for you:
 
 ## ArtSecure PDF Presentation
 To have a preview of the site you can have a look at my PDF
-presentation file: "Progetto-DJango-di-Anthony-Dei-Medici.pdf"
+presentation file: "[Progetto-DJango-di-Anthony-Dei-Medici.pdf](https://github.com/AnthonyDM-Dev/ArtSecure_DJango-Redis_Project/blob/master/Progetto-DJango-di-Anthony-Dei-Medici.pdf)"
 
 ## Contact Information
 Anthony Dei Medici - anthony.deimedici@gmail.com
